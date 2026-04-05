@@ -20,7 +20,7 @@ description: |
 
 3.  **结构化输出 (Structured Output)**：
     *   返回包含 `title`, `content` (Markdown), `url` 的标准 JSON 对象。
-    *   用户可利用 OpenClaw 的管道功能，将输出自行同步至飞书、Notion 或本地文件系统。
+    *   用户可利用 OpenClaw 的管道功能，将输出自行同步至任意目标平台。
 
 ## 脚本说明 (Scripts)
 
