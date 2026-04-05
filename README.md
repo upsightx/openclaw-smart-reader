@@ -15,7 +15,7 @@
 
 1.  **安装**：
     ```bash
-    clawhub install upsightx/openclaw-wechat-reader
+    clawhub install upsightx/openclaw-smart-reader
     ```
 2.  **使用**：
     在对话框中直接发送任意文章链接（微信、Medium、Twitter、Substack 等），Skill 会自动选择最优引擎进行解析。

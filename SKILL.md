@@ -6,7 +6,7 @@ description: |
   支持将文章转换为 Markdown 并保存至飞书云文档。
 ---
 
-# WeChat Reader Skill
+# Smart Reader Skill
 
 ## 核心工作流 (Core Workflow)
 
