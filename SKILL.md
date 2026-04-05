@@ -18,9 +18,9 @@ description: |
     *   若直接抓取失败，尝试通过第三方解析接口（如长风盒子等）获取内容。
     *   若所有自动化手段均失效，**必须**如实告知用户“微信反爬限制”，并提供手动解析的建议，严禁编造文章内容。
 
-3.  **结构化归档 (Structured Archiving)**：
-    *   调用 `parser.py` 提取标题和正文。
-    *   调用 `feishu_create_doc` 存入指定的飞书文件夹（默认：`Zxw7fE4zBlnUgFdAtWjcTb5Vnzb`）。
+3.  **结构化输出 (Structured Output)**：
+    *   返回包含 `title`, `content` (Markdown), `url` 的标准 JSON 对象。
+    *   用户可利用 OpenClaw 的管道功能，将输出自行同步至飞书、Notion 或本地文件系统。
 
 ## 脚本说明 (Scripts)
 
