@@ -19,8 +19,13 @@ description: |
     *   若所有自动化手段均失效，**必须**如实告知用户“微信反爬限制”，并提供手动解析的建议，严禁编造文章内容。
 
 3.  **结构化归档 (Structured Archiving)**：
-    *   将提取到的标题、正文、图片链接整理成标准的 Markdown 格式。
-    *   调用 `feishu_create_doc` 存入指定的飞书文件夹。
+    *   调用 `parser.py` 提取标题和正文。
+    *   调用 `feishu_create_doc` 存入指定的飞书文件夹（默认：`Zxw7fE4zBlnUgFdAtWjcTb5Vnzb`）。
+
+## 脚本说明 (Scripts)
+
+*   `parser.py`: 核心解析逻辑，支持 Markdown 格式化。
+*   `feishu_saver.py`: 辅助脚本，用于将结果同步至飞书。
 
 ## 错误处理 (Error Handling)
 
