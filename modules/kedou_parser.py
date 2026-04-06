@@ -1,6 +1,50 @@
 import subprocess
 import time
 import json
+import urllib.parse
+
+def extract_with_mptext_api(url: str) -> dict:
+    """
+    使用 mptext.top 公共 API 提取微信公众号文章内容。
+    支持 text/markdown/html/json 格式，无需密钥（仅部分功能需密钥）。
+    """
+    base_url = "https://down.mptext.top/api/public/v1/download"
+    result = {
+        "title": "",
+        "content": "",
+        "media_type": "text",
+        "source": "mptext_api"
+    }
+
+    try:
+        encoded_url = urllib.parse.quote(url, safe='')
+        api_url = f"{base_url}?url={encoded_url}&format=markdown"
+        
+        print(f"[MPText-API] Fetching: {api_url}")
+        output = subprocess.run(
+            ["curl", "-s", "-A", "Mozilla/5.0", api_url], 
+            capture_output=True, text=True, timeout=30
+        )
+        
+        if output.returncode == 0 and output.stdout.strip():
+            # mptext 返回的内容可能包含一些 CSS 或 JS，这里简单清洗
+            content = output.stdout
+            # 尝试提取标题（如果是 markdown 格式，标题通常在第一行）
+            lines = content.split('\n')
+            for line in lines:
+                if line.startswith('# '):
+                    result["title"] = line[2:].strip()
+                    break
+            result["content"] = content
+            print(f"[MPText-API] Success! Content length: {len(content)}")
+        else:
+            print(f"[MPText-API] Fetch failed or empty response.")
+            
+        return result
+
+    except Exception as e:
+        print(f"[MPText-API] Critical Error: {str(e)}")
+        return result
 
 def extract_with_kedou_api(url: str) -> dict:
     """
